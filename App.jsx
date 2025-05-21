@@ -3,12 +3,8 @@ import { Canvas } from '@react-three/fiber'
 import { OrbitControls, useGLTF } from '@react-three/drei'
 import './style.css'
 
-function Island() {
-  const { scene } = useGLTF('/models/tropical_island.glb')
-  return <primitive object={scene} scale={0.5} />
-}
-
 export default function App() {
+  const { scene } = useGLTF('https://cdn.jsdelivr.net/gh/openai-public-cdn/assets/tropical_island.glb')
   return (
     <div className="container">
       <aside className="kanban">
@@ -20,7 +16,7 @@ export default function App() {
       <Canvas className="canvas">
         <ambientLight intensity={1.2} />
         <pointLight position={[10, 10, 10]} />
-        <Island />
+        <primitive object={scene} scale={0.5} />
         <OrbitControls />
       </Canvas>
     </div>
